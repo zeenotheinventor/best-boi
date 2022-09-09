@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/best-boi/static/css/main.073c9b0a.css",
+    "main.js": "/best-boi/static/js/main.613c5b34.js",
+    "static/js/787.378037f0.chunk.js": "/best-boi/static/js/787.378037f0.chunk.js",
+    "static/media/logo.svg": "/best-boi/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/best-boi/index.html",
+    "main.073c9b0a.css.map": "/best-boi/static/css/main.073c9b0a.css.map",
+    "main.613c5b34.js.map": "/best-boi/static/js/main.613c5b34.js.map",
+    "787.378037f0.chunk.js.map": "/best-boi/static/js/787.378037f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.613c5b34.js"
+  ]
+}
