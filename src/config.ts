@@ -4,7 +4,7 @@ export const statsMap: Stats = {
   interviews: 250,
   deals: 1000,
   cvs: 100,
-  client_calls: 15,
+  client_calls: 5,
 };
 
 export const calculateScore = (stats: Stats) => {
