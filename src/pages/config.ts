@@ -8,7 +8,7 @@ export const statsMap: Stats = {
   client_calls: 5,
 };
 
-export const calculateScore = (stats: Stats) => {
+export const calculateScore = (stats: Stats): number => {
   let score = 0;
 
   const statsSettings = loadStats();

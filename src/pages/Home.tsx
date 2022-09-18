@@ -5,9 +5,22 @@ import AddUserForm from "../components/AddUserForm/AddUserForm";
 import { calculateScore } from "./config";
 import { User, Stats } from "./types";
 import UserPanel from "../components/UserPanel/UserPanel";
+import { useNavigate } from "react-router-dom";
+
+export const loadUsers = (): User[] => {
+  const data = localStorage.getItem("users");
+
+  let users: User[] = [];
+  if (data) {
+    users = JSON.parse(data);
+  }
+
+  return users;
+};
 
 function Home() {
   const [users, setUsers] = useState<User[]>([]);
+  const nav = useNavigate();
 
   useEffect(() => {
     setUsers(loadUsers());
@@ -33,40 +46,25 @@ function Home() {
     setUsers(users);
   };
 
-  const loadUsers = (): User[] => {
-    const data = localStorage.getItem("users");
-
-    let users: User[] = [];
-    if (data) {
-      users = JSON.parse(data);
-    }
-
-    return users;
-  };
-
   const handleComputeRecommendation = () => {
-    if (!(users.length > 0)) {
-      alert("YOU NEED TO ADD USERS!");
-      return;
-    }
-
-    const userScores = users.map((user) => {
-      const { stats } = user;
-      const score = calculateScore(stats);
-
-      return { score, user };
-    });
-
-    userScores.sort((a, b) => {
-      if (a.score > b.score) return -1;
-      if (a.score > b.score) return 1;
-      return 0;
-    });
-
-    const maxUser = userScores[0].user.name;
-    console.log(userScores);
-
-    alert(`Your best Bet is ${maxUser}`);
+    nav("ranking");
+    // if (!(users.length > 0)) {
+    //   alert("YOU NEED TO ADD USERS!");
+    //   return;
+    // }
+    // const userScores = users.map((user) => {
+    //   const { stats } = user;
+    //   const score = calculateScore(stats);
+    //   return { score, user };
+    // });
+    // userScores.sort((a, b) => {
+    //   if (a.score > b.score) return -1;
+    //   if (a.score > b.score) return 1;
+    //   return 0;
+    // });
+    // const maxUser = userScores[0].user.name;
+    // console.log(userScores);
+    // alert(`Your best Bet is ${maxUser}`);
   };
 
   return (
