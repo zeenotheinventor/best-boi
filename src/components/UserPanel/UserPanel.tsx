@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 interface Props {
   user: User;
-  onRemoveUser: (id: string) => void;
+  onRemoveUser?: (id: string) => void;
   onStatsChange: (id: string, stats: Stats) => void;
 }
 const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
@@ -51,13 +51,15 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
         </Grid>
         <Grid item>{labels.map(renderStatLabel)}</Grid>
         <Grid item>{valueLabels.map(renderStatValue)}</Grid>
-        <Grid item>
+        {onRemoveUser && (
           <Grid item>
-            <IconButton onClick={() => onRemoveUser(id)}>
-              <CloseIcon />
-            </IconButton>
+            <Grid item>
+              <IconButton onClick={() => onRemoveUser(id)}>
+                <CloseIcon />
+              </IconButton>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </form>
   );
