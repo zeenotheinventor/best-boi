@@ -1,7 +1,7 @@
 import React from "react";
 import { Stats, User } from "../../pages/types";
 import CloseIcon from "@mui/icons-material/Close";
-import { Grid, IconButton, TextField } from "@mui/material";
+import { Grid, IconButton, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 
 interface Props {
@@ -46,7 +46,7 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
       <Grid container spacing={2}>
         <Grid item>
           <Grid item sx={{ py: 1.4 }}>
-            {name}
+            <Typography sx={{ fontWeight: "bold" }}>{name}</Typography>
           </Grid>
         </Grid>
         <Grid item>{labels.map(renderStatLabel)}</Grid>

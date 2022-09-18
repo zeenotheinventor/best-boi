@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { v4 } from "uuid";
@@ -20,17 +20,21 @@ const AddUserForm = ({ onSubmit }: Props) => {
     });
   };
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit((a) => {
-          submitAddUserForm(a);
-        })(e);
-      }}
-    >
-      <TextField {...register("name")} size="small" />
+    <Box sx={{ my: 2 }}>
+      <form
+        onSubmit={(e) => {
+          handleSubmit((a) => {
+            submitAddUserForm(a);
+          })(e);
+        }}
+      >
+        <TextField {...register("name")} size="small" />
 
-      <Button type="submit">Add User</Button>
-    </form>
+        <Button type="submit" sx={{ my: 0.4 }}>
+          Add User
+        </Button>
+      </form>
+    </Box>
   );
 };
 

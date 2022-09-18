@@ -3,7 +3,7 @@ import UserPanel from "../../components/UserPanel/UserPanel";
 import { statsMap as defaultStats } from "../config";
 import { Stats } from "../types";
 
-const loadStats = (): Stats => {
+export const loadStats = (): Stats => {
   const data = localStorage.getItem("stats");
 
   let stats: Stats = defaultStats;

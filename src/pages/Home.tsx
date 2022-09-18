@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import AddUserForm from "../components/AddUserForm/AddUserForm";
 import { calculateScore } from "./config";
 import { User, Stats } from "./types";
@@ -13,13 +13,9 @@ function Home() {
     setUsers(loadUsers());
   }, []);
 
-  const addUser = (user: User) => {
-    saveUsers([...users, user]);
-  };
+  const addUser = (user: User) => saveUsers([...users, user]);
 
-  const removeUser = (id: string) => {
-    saveUsers(users.filter((user) => user.id !== id));
-  };
+  const removeUser = (id: string) => saveUsers(users.filter((user) => user.id !== id));
 
   const updateStats = (id: string, stats: Stats) => {
     const newUsers = users.map((user) => user);
@@ -74,10 +70,10 @@ function Home() {
   };
 
   return (
-    <div className="App">
+    <Box>
       <Typography variant="h3">Smart Sales Companion</Typography>
       <AddUserForm onSubmit={addUser} />
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ my: 2 }}>
         {users.map((user) => (
           <Grid item xs={3} key={user.id}>
             <UserPanel
@@ -99,7 +95,7 @@ function Home() {
           See Users
         </Button>
       )}
-    </div>
+    </Box>
   );
 }
 

@@ -4,11 +4,11 @@ import Settings from "./pages/settings";
 
 import Home from "./pages/Home";
 import Ranking from "./pages/ranking";
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 
 function App() {
   return (
-    <Box>
+    <Container className="App" maxWidth="xl">
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
@@ -16,7 +16,7 @@ function App() {
           <Route path="ranking" element={<Ranking />} />
         </Route>
       </Routes>
-    </Box>
+    </Container>
   );
 }
 

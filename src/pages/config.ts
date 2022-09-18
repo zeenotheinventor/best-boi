@@ -1,3 +1,4 @@
+import { loadStats } from "./settings/Settings";
 import { Stats } from "./types";
 
 export const statsMap: Stats = {
@@ -10,8 +11,10 @@ export const statsMap: Stats = {
 export const calculateScore = (stats: Stats) => {
   let score = 0;
 
-  Object.keys(statsMap).forEach(
-    (att) => (score += stats[att as keyof Stats] * statsMap[att as keyof Stats]),
+  const statsSettings = loadStats();
+
+  Object.keys(statsSettings).forEach(
+    (att) => (score += stats[att as keyof Stats] * statsSettings[att as keyof Stats]),
   );
   return score;
 };
