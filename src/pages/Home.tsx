@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { Box, Button, Grid, Typography } from "@mui/material";
 import AddUserForm from "../components/AddUserForm/AddUserForm";
-import { calculateScore } from "./config";
 import { User, Stats } from "./types";
 import UserPanel from "../components/UserPanel/UserPanel";
 import { useNavigate } from "react-router-dom";
@@ -48,23 +47,6 @@ function Home() {
 
   const handleComputeRecommendation = () => {
     nav("ranking");
-    // if (!(users.length > 0)) {
-    //   alert("YOU NEED TO ADD USERS!");
-    //   return;
-    // }
-    // const userScores = users.map((user) => {
-    //   const { stats } = user;
-    //   const score = calculateScore(stats);
-    //   return { score, user };
-    // });
-    // userScores.sort((a, b) => {
-    //   if (a.score > b.score) return -1;
-    //   if (a.score > b.score) return 1;
-    //   return 0;
-    // });
-    // const maxUser = userScores[0].user.name;
-    // console.log(userScores);
-    // alert(`Your best Bet is ${maxUser}`);
   };
 
   return (

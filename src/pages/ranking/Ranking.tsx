@@ -1,8 +1,8 @@
-import { Box, FormLabel, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { calculateScore } from "../config";
 import { loadUsers } from "../Home";
-import { orderBy, round, sortBy } from "lodash";
+import { orderBy, round } from "lodash";
 import { User } from "../types";
 
 const Ranking = () => {
