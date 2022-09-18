@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { v4 } from "uuid";
-import { User } from "./types";
+import { User } from "../../pages/types";
 
 interface Props {
   onSubmit: (user: User) => void;

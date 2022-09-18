@@ -1,5 +1,5 @@
 import React from "react";
-import { Stats, User } from "./types";
+import { Stats, User } from "../../pages/types";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button, Grid, IconButton, TextField } from "@mui/material";
 import { FieldValues, useForm } from "react-hook-form";
@@ -37,12 +37,7 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
     );
   };
 
-  const handleUpdateUser = ({
-    interviews,
-    client_calls,
-    deals,
-    cvs,
-  }: FieldValues) => {
+  const handleUpdateUser = ({ interviews, client_calls, deals, cvs }: FieldValues) => {
     console.log({
       interviews,
       client_calls,
