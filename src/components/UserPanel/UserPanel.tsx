@@ -1,8 +1,8 @@
 import React from "react";
 import { Stats, User } from "../../pages/types";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, TextField } from "@mui/material";
-import { FieldValues, useForm } from "react-hook-form";
+import { Grid, IconButton, TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 interface Props {
   user: User;
@@ -11,7 +11,7 @@ interface Props {
 }
 const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
   const { name, id, stats } = user;
-  const { register, handleSubmit } = useForm({ defaultValues: stats });
+  const { register } = useForm({ defaultValues: stats });
 
   const labels = ["Interviews", "Client Calls", "CVs", "Deals"];
   const valueLabels = ["interviews", "client_calls", "cvs", "deals"];
@@ -28,7 +28,11 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
     return (
       <Grid item key={i}>
         <TextField
-          {...register(name as keyof Stats)}
+          {...register(name as keyof Stats, {
+            onChange(e) {
+              onStatsChange(id, { ...stats, [name]: e.target.value });
+            },
+          })}
           size="small"
           sx={{ width: 70, ml: 1 }}
           defaultValue={0}
@@ -37,30 +41,8 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
     );
   };
 
-  const handleUpdateUser = ({ interviews, client_calls, deals, cvs }: FieldValues) => {
-    console.log({
-      interviews,
-      client_calls,
-      deals,
-      cvs,
-    });
-    onStatsChange(id, {
-      interviews,
-      client_calls,
-      deals,
-      cvs,
-    });
-  };
-
   return (
-    <form
-      key={id}
-      onSubmit={(e) => {
-        handleSubmit((a) => {
-          handleUpdateUser(a);
-        })(e);
-      }}
-    >
+    <form key={id}>
       <Grid container spacing={2}>
         <Grid item>
           <Grid item sx={{ py: 1.4 }}>
@@ -74,9 +56,6 @@ const UserPanel = ({ user, onRemoveUser, onStatsChange }: Props) => {
             <IconButton onClick={() => onRemoveUser(id)}>
               <CloseIcon />
             </IconButton>
-          </Grid>
-          <Grid item>
-            <Button type="submit">Update</Button>
           </Grid>
         </Grid>
       </Grid>
